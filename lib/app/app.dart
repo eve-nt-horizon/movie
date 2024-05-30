@@ -10,6 +10,9 @@ import 'package:movie/ui/views/login/login_view.dart';
 import 'package:movie/ui/views/sign_up/sign_up_view.dart';
 
 import 'package:movie/ui/views/movie_page/movie_page_view.dart';
+
+import 'package:movie/ui/views/login/login_view.dart';
+import 'package:movie/ui/views/signup/signup_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -21,6 +24,8 @@ import 'package:movie/ui/views/movie_page/movie_page_view.dart';
     MaterialRoute(page: LoginView),
     MaterialRoute(page: SignUpView),
     MaterialRoute(page: MoviePageView),
+    MaterialRoute(page: LoginView),
+    MaterialRoute(page: SignupView),
 // @stacked-route
   ],
   dependencies: [

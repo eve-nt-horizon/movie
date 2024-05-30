@@ -29,8 +29,7 @@ class HomeView extends StackedView<HomeViewModel> {
         child: Column(
           children: [
             FloatingActionButton.large(
-              onPressed: () =>
-                  _navigationService.replaceWithSearchView(),
+              onPressed: () => _navigationService.replaceWithSearchView(),
               child: const Text('Search'),
             ),
             MovieList(movies: viewModel.movies),

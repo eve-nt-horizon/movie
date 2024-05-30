@@ -10,11 +10,9 @@ final _apiService = locator<ApiService>();
 final _navigationService = locator<NavigationService>();
 
 class MoviePanelModel extends BaseViewModel {
-
   Future navigateToMoviePage({required id}) async {
     var movie = await _apiService.findMovieById(id);
 
     _navigationService.clearTillFirstAndShowView(MoviePageView(movie: movie));
   }
-
 }

@@ -8,7 +8,6 @@ import 'package:stacked_services/stacked_services.dart';
 
 import 'movie_page_viewmodel.dart';
 
-
 class MoviePageView extends StackedView<MoviePageViewModel> {
   const MoviePageView({Key? key, required this.movie}) : super(key: key);
   final TMDBMovieBasic movie;
