@@ -1,14 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:movie/app/app.locator.dart';
 import 'package:movie/app/app.router.dart';
+import 'package:movie/services/firebase_auth_service.dart';
 import 'package:movie/ui/smol_widgets/movie_list.dart';
-import 'package:movie/ui/widgets/common/movie_panel/movie_panel.dart';
+import 'package:movie/ui/views/login/login_view.dart';
 import 'package:stacked/stacked.dart';
 import 'package:stacked_services/stacked_services.dart';
 
 import 'search_viewmodel.dart';
 
 final _navigationService = locator<NavigationService>();
+final _firebaseService = locator<FirebaseAuthService>();
 
 class SearchView extends StackedView<SearchViewModel> {
   const SearchView({Key? key}) : super(key: key);

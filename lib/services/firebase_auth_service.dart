@@ -1,7 +1,21 @@
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
 
 class FirebaseAuthService {
-  final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
+  FirebaseApp app;
+
+  FirebaseAuthService({required this.app}) {
+    _firebaseAuth = FirebaseAuth.instanceFor(app: app);
+  }
+  late FirebaseAuth _firebaseAuth;
+
+  Stream<User?> get onAuthStateChanged => _firebaseAuth.authStateChanges();
+
+  User? get user => _firebaseAuth.currentUser;
+
+  void initApp() async {
+    _firebaseAuth = FirebaseAuth.instanceFor(app: app);
+  }
 
   Future loginWithEmail({
     required String email,
@@ -27,5 +41,9 @@ class FirebaseAuthService {
     } catch (e) {
       return e;
     }
+  }
+
+  Future logOut() async {
+    await _firebaseAuth.signOut();
   }
 }

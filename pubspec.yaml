@@ -9,7 +9,7 @@ environment:
 dependencies:
   dio: ^5.4.3+1
   firebase_auth: ^4.20.0
-  firebase_core: ^2.31.1
+  firebase_core: ^2.32.0
   flutter:
     sdk: flutter
   logger: ^1.4.0

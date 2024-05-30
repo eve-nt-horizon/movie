@@ -26,6 +26,6 @@ class StartupViewModel extends BaseViewModel {
     await authenticate();
     await storeGenresToMap();
 
-    _navigationService.replaceWithLoginView();
+    _navigationService.replaceWithDetectloginView();
   }
 }

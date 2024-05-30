@@ -8,13 +8,13 @@
 import 'package:flutter/material.dart' as _i10;
 import 'package:flutter/material.dart';
 import 'package:movie/models/tmdb/tmdb_movie_basic.dart' as _i11;
+import 'package:movie/ui/views/detectlogin/detectlogin_view.dart' as _i9;
 import 'package:movie/ui/views/home/home_view.dart' as _i2;
 import 'package:movie/ui/views/login/login_view.dart' as _i6;
 import 'package:movie/ui/views/movie_page/movie_page_view.dart' as _i8;
 import 'package:movie/ui/views/results/results_view.dart' as _i4;
 import 'package:movie/ui/views/search/search_view.dart' as _i5;
 import 'package:movie/ui/views/sign_up/sign_up_view.dart' as _i7;
-import 'package:movie/ui/views/signup/signup_view.dart' as _i9;
 import 'package:movie/ui/views/startup/startup_view.dart' as _i3;
 import 'package:stacked/stacked.dart' as _i1;
 import 'package:stacked_services/stacked_services.dart' as _i12;
@@ -34,7 +34,8 @@ class Routes {
 
   static const moviePageView = '/movie-page-view';
 
-  static const signupView = '/signup-view';
+
+  static const detectloginView = '/detectlogin-view';
 
   static const all = <String>{
     homeView,
@@ -44,7 +45,7 @@ class Routes {
     loginView,
     signUpView,
     moviePageView,
-    signupView,
+    detectloginView,
   };
 }
 
@@ -83,8 +84,8 @@ class StackedRouter extends _i1.RouterBase {
       page: _i6.LoginView,
     ),
     _i1.RouteDef(
-      Routes.signupView,
-      page: _i9.SignupView,
+      Routes.detectloginView,
+      page: _i9.DetectloginView,
     ),
   ];
 
@@ -133,9 +134,9 @@ class StackedRouter extends _i1.RouterBase {
         settings: data,
       );
     },
-    _i9.SignupView: (data) {
+    _i9.DetectloginView: (data) {
       return _i10.MaterialPageRoute<dynamic>(
-        builder: (context) => const _i9.SignupView(),
+        builder: (context) => const _i9.DetectloginView(),
         settings: data,
       );
     },
@@ -277,14 +278,16 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> navigateToSignupView([
+
+
+  Future<dynamic> navigateToDetectloginView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return navigateTo<dynamic>(Routes.signupView,
+    return navigateTo<dynamic>(Routes.detectloginView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -392,14 +395,16 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
-  Future<dynamic> replaceWithSignupView([
+
+
+  Future<dynamic> replaceWithDetectloginView([
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
     Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
         transition,
   ]) async {
-    return replaceWith<dynamic>(Routes.signupView,
+    return replaceWith<dynamic>(Routes.detectloginView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
