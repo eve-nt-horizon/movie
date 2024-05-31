@@ -5,9 +5,9 @@
 // **************************************************************************
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:flutter/material.dart' as _i10;
+import 'package:flutter/material.dart' as _i11;
 import 'package:flutter/material.dart';
-import 'package:movie/models/tmdb/tmdb_movie_basic.dart' as _i11;
+import 'package:movie/models/tmdb/tmdb_movie_basic.dart' as _i12;
 import 'package:movie/ui/views/detectlogin/detectlogin_view.dart' as _i9;
 import 'package:movie/ui/views/home/home_view.dart' as _i2;
 import 'package:movie/ui/views/login/login_view.dart' as _i6;
@@ -16,8 +16,9 @@ import 'package:movie/ui/views/results/results_view.dart' as _i4;
 import 'package:movie/ui/views/search/search_view.dart' as _i5;
 import 'package:movie/ui/views/sign_up/sign_up_view.dart' as _i7;
 import 'package:movie/ui/views/startup/startup_view.dart' as _i3;
+import 'package:movie/ui/views/watchlist/watchlist_view.dart' as _i10;
 import 'package:stacked/stacked.dart' as _i1;
-import 'package:stacked_services/stacked_services.dart' as _i12;
+import 'package:stacked_services/stacked_services.dart' as _i13;
 
 class Routes {
   static const homeView = '/home-view';
@@ -34,8 +35,9 @@ class Routes {
 
   static const moviePageView = '/movie-page-view';
 
-
   static const detectloginView = '/detectlogin-view';
+
+  static const watchlistView = '/watchlist-view';
 
   static const all = <String>{
     homeView,
@@ -46,6 +48,7 @@ class Routes {
     signUpView,
     moviePageView,
     detectloginView,
+    watchlistView,
   };
 }
 
@@ -87,56 +90,66 @@ class StackedRouter extends _i1.RouterBase {
       Routes.detectloginView,
       page: _i9.DetectloginView,
     ),
+    _i1.RouteDef(
+      Routes.watchlistView,
+      page: _i10.WatchlistView,
+    ),
   ];
 
   final _pagesMap = <Type, _i1.StackedRouteFactory>{
     _i2.HomeView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i2.HomeView(),
         settings: data,
       );
     },
     _i3.StartupView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i3.StartupView(),
         settings: data,
       );
     },
     _i4.ResultsView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i4.ResultsView(),
         settings: data,
       );
     },
     _i5.SearchView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i5.SearchView(),
         settings: data,
       );
     },
     _i6.LoginView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i6.LoginView(),
         settings: data,
       );
     },
     _i7.SignUpView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i7.SignUpView(),
         settings: data,
       );
     },
     _i8.MoviePageView: (data) {
       final args = data.getArgs<MoviePageViewArguments>(nullOk: false);
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) =>
             _i8.MoviePageView(key: args.key, movie: args.movie),
         settings: data,
       );
     },
     _i9.DetectloginView: (data) {
-      return _i10.MaterialPageRoute<dynamic>(
+      return _i11.MaterialPageRoute<dynamic>(
         builder: (context) => const _i9.DetectloginView(),
+        settings: data,
+      );
+    },
+    _i10.WatchlistView: (data) {
+      return _i11.MaterialPageRoute<dynamic>(
+        builder: (context) => const _i10.WatchlistView(),
         settings: data,
       );
     },
@@ -155,9 +168,9 @@ class MoviePageViewArguments {
     required this.movie,
   });
 
-  final _i10.Key? key;
+  final _i11.Key? key;
 
-  final _i11.TMDBMovieBasic movie;
+  final _i12.TMDBMovieBasic movie;
 
   @override
   String toString() {
@@ -176,7 +189,7 @@ class MoviePageViewArguments {
   }
 }
 
-extension NavigatorStateExtension on _i12.NavigationService {
+extension NavigatorStateExtension on _i13.NavigationService {
   Future<dynamic> navigateToHomeView([
     int? routerId,
     bool preventDuplicates = true,
@@ -262,8 +275,8 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> navigateToMoviePageView({
-    _i10.Key? key,
-    required _i11.TMDBMovieBasic movie,
+    _i11.Key? key,
+    required _i12.TMDBMovieBasic movie,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -278,8 +291,6 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
-
-
   Future<dynamic> navigateToDetectloginView([
     int? routerId,
     bool preventDuplicates = true,
@@ -288,6 +299,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return navigateTo<dynamic>(Routes.detectloginView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> navigateToWatchlistView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return navigateTo<dynamic>(Routes.watchlistView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,
@@ -379,8 +404,8 @@ extension NavigatorStateExtension on _i12.NavigationService {
   }
 
   Future<dynamic> replaceWithMoviePageView({
-    _i10.Key? key,
-    required _i11.TMDBMovieBasic movie,
+    _i11.Key? key,
+    required _i12.TMDBMovieBasic movie,
     int? routerId,
     bool preventDuplicates = true,
     Map<String, String>? parameters,
@@ -395,8 +420,6 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition: transition);
   }
 
-
-
   Future<dynamic> replaceWithDetectloginView([
     int? routerId,
     bool preventDuplicates = true,
@@ -405,6 +428,20 @@ extension NavigatorStateExtension on _i12.NavigationService {
         transition,
   ]) async {
     return replaceWith<dynamic>(Routes.detectloginView,
+        id: routerId,
+        preventDuplicates: preventDuplicates,
+        parameters: parameters,
+        transition: transition);
+  }
+
+  Future<dynamic> replaceWithWatchlistView([
+    int? routerId,
+    bool preventDuplicates = true,
+    Map<String, String>? parameters,
+    Widget Function(BuildContext, Animation<double>, Animation<double>, Widget)?
+        transition,
+  ]) async {
+    return replaceWith<dynamic>(Routes.watchlistView,
         id: routerId,
         preventDuplicates: preventDuplicates,
         parameters: parameters,

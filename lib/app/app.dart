@@ -12,6 +12,7 @@ import 'package:movie/ui/views/sign_up/sign_up_view.dart';
 import 'package:movie/ui/views/movie_page/movie_page_view.dart';
 
 import 'package:movie/ui/views/detectlogin/detectlogin_view.dart';
+import 'package:movie/ui/views/watchlist/watchlist_view.dart';
 // @stacked-import
 
 @StackedApp(
@@ -26,6 +27,7 @@ import 'package:movie/ui/views/detectlogin/detectlogin_view.dart';
     MaterialRoute(page: LoginView),
 
     MaterialRoute(page: DetectloginView),
+    MaterialRoute(page: WatchlistView),
 // @stacked-route
   ],
   dependencies: [

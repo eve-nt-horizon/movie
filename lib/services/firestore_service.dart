@@ -1,9 +1,23 @@
+import 'dart:async';
+
 import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:movie/ui/smol_widgets/movie_list.dart';
 
 class FirestoreService {
   final CollectionReference _usersCollectionReference =
       FirebaseFirestore.instance.collection('users');
+
+  final StreamController<List<int>> _watchlistController =
+      StreamController<List<int>>.broadcast();
+
+  Stream listenToWatchlistChanges() {
+    _usersCollectionReference.snapshots().listen((userSnapshot) {
+      if (userSnapshot.docs.isNotEmpty) {
+        var movieIds = userSnapshot.docs.first as List<int>;
+        _watchlistController.add(movieIds);
+      }
+    });
+    return _watchlistController.stream;
+  }
 
   Future addPost({required userEmail, movieId}) async {
     try {

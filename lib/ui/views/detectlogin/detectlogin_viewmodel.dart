@@ -9,5 +9,4 @@ class DetectloginViewModel extends StreamViewModel {
   @override
   // TODO: implement stream
   Stream<User?> get stream => _firebaseAuthService.onAuthStateChanged;
-
 }

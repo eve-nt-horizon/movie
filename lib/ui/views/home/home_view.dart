@@ -42,6 +42,13 @@ class HomeView extends StackedView<HomeViewModel> {
               },
               child: Text('Sign Out'),
             ),
+            FloatingActionButton.small(
+              heroTag: '3',
+              onPressed: () {
+                _navigationService.navigateToWatchlistView();
+              },
+              child: Text('Watchlist'),
+            ),
             MovieList(movies: viewModel.movies),
           ],
         ),
