@@ -31,10 +31,12 @@ class HomeView extends StackedView<HomeViewModel> {
         child: Column(
           children: [
             FloatingActionButton.large(
+              heroTag: '1',
               onPressed: () => _navigationService.replaceWithSearchView(),
               child: const Text('Search'),
             ),
             FloatingActionButton.small(
+              heroTag: '2',
               onPressed: () {
                 _firebaseAuthService.logOut();
               },

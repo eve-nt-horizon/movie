@@ -9,6 +9,7 @@
 import 'package:firebase_core/firebase_core.dart';
 import 'package:movie/services/api_service.dart';
 import 'package:movie/services/firebase_auth_service.dart';
+import 'package:movie/services/firestore_service.dart';
 import 'package:stacked_services/src/bottom_sheet/bottom_sheet_service.dart';
 import 'package:stacked_services/src/dialog/dialog_service.dart';
 import 'package:stacked_services/src/navigation/navigation_service.dart';
@@ -30,4 +31,5 @@ Future<void> setupLocator({
   locator.registerLazySingleton(() => NavigationService());
   locator.registerLazySingleton(() => ApiService());
   locator.registerLazySingleton(() => FirebaseAuthService(app: app));
+  locator.registerLazySingleton(() => FirestoreService());
 }
